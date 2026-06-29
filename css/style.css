@@ -1,0 +1,76 @@
+/* ----------------------------------------------------
+   SarmientoOS Modern Developer Terminal - Main Entry
+   ---------------------------------------------------- */
+
+@import 'themes.css';
+@import 'window.css';
+@import 'terminal.css';
+@import 'dashboard.css';
+
+/* Reset y Estilos Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--body-bg);
+    color: var(--text-main);
+    font-family: var(--font-family);
+    font-size: 15px;
+    line-height: 1.5;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+/* ----------------------------------------------------
+   Utilidades y Animaciones Comunes
+   ---------------------------------------------------- */
+.blink {
+    animation: blink 1.2s step-end infinite;
+}
+
+.blink-fast {
+    animation: blink 0.6s step-end infinite;
+}
+
+@keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Estilos de Iconos SVG */
+.icon-svg {
+    display: inline-block;
+    vertical-align: middle;
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+    color: inherit;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.icon-svg.size-sm {
+    width: 12px;
+    height: 12px;
+}
+
+.icon-svg.size-md {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+.no-margin-right {
+    margin-right: 0 !important;
+}

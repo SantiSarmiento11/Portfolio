@@ -1,0 +1,416 @@
+/* ----------------------------------------------------
+   SarmientoOS Modern Developer Terminal - GUI Dashboard Elements
+   ---------------------------------------------------- */
+
+.tui-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.tui-nav {
+    display: flex;
+    background-color: var(--header-bg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    overflow-x: auto;
+}
+
+.tui-tab {
+    background: transparent;
+    border: none;
+    font-family: var(--font-family);
+    font-size: 13px;
+    color: var(--text-main);
+    padding: 8px 20px;
+    cursor: pointer;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    outline: none;
+    opacity: 0.6;
+    transition: opacity 0.2s, background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tui-tab:hover, .tui-tab.active {
+    opacity: 1;
+    background-color: var(--tab-active-bg);
+}
+
+.tui-tab.active {
+    border-bottom: 2px solid var(--accent-color);
+    font-weight: 500;
+}
+
+.tui-window {
+    flex: 1;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: var(--tab-active-bg);
+    padding: 20px;
+    overflow-y: auto;
+    border-radius: 0 0 6px 6px;
+}
+
+/* Grid & Layout System */
+.tui-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.tui-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .tui-grid-2, .tui-grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Modern Card Box Layouts */
+.tui-box {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 18px;
+    position: relative;
+    margin-bottom: 10px;
+    background-color: var(--box-bg);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.tui-box:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.tui-box-title {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background-color: var(--header-bg);
+    padding: 2px 10px;
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--accent-color);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+}
+
+/* Graphs and stats (Modern layout) */
+.sys-graph-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 15px 0 10px 0;
+}
+
+.sys-bar {
+    position: relative;
+    background-color: rgba(255,255,255,0.06);
+    border-radius: 4px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background-color: var(--accent-color);
+    opacity: 0.6;
+    border-radius: 4px 0 0 4px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bar-lbl {
+    position: absolute;
+    left: 12px;
+    font-size: 13px;
+    color: var(--text-main);
+    font-weight: 500;
+    z-index: 5;
+}
+
+.sys-info-desc {
+    font-size: 13px;
+    margin-top: 12px;
+    color: var(--text-dim);
+}
+
+.sys-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.sys-table td {
+    padding: 10px 4px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sys-table td:first-child {
+    font-weight: 500;
+    color: var(--accent-color);
+    width: 35%;
+}
+
+.sys-table tr:last-child td {
+    border-bottom: none;
+}
+
+.sys-log-stream {
+    font-size: 13px;
+    font-family: var(--font-family);
+    height: 140px;
+    overflow-y: hidden;
+}
+
+.sys-log-stream p {
+    margin-bottom: 6px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* Estilo Bio (Perfil) */
+.bio-layout {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+@media (max-width: 600px) {
+    .bio-layout {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+.bio-avatar-ascii {
+    font-size: 12px;
+    line-height: 1.3;
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 15px;
+    background-color: rgba(0,0,0,0.15);
+    color: var(--accent-color);
+}
+
+.bio-text h3 {
+    margin-bottom: 4px;
+    font-size: 20px;
+    color: var(--text-main);
+}
+
+.role-subtitle {
+    font-size: 14px;
+    color: var(--link-color);
+    margin-bottom: 12px;
+}
+
+.bio-text p {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.bio-text blockquote {
+    border-left: 3px solid var(--accent-color);
+    padding-left: 12px;
+    margin: 10px 0;
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 13px;
+}
+
+/* Skills list */
+.skills-list {
+    list-style: none;
+}
+
+.skills-list li {
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.skill-dot {
+    color: var(--accent-color);
+}
+
+/* Projects panel */
+.project-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-desc {
+    font-size: 13px;
+    margin: 10px 0;
+    color: var(--text-dim);
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.project-tags span {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background-color: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--accent-color);
+}
+
+.project-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.retro-link {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background-color: rgba(255,255,255,0.03);
+    transition: background-color 0.2s, border-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.retro-link:hover {
+    background-color: rgba(255,255,255,0.08);
+    border-color: var(--accent-color);
+}
+
+.retro-link-full {
+    color: var(--link-color);
+    text-decoration: underline;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.retro-link-full:hover {
+    color: var(--accent-color);
+}
+
+/* Contact layout */
+.contact-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.contact-card {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background-color: rgba(255,255,255,0.04);
+    transition: background-color 0.2s, border-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.contact-card:hover {
+    border-color: var(--accent-color);
+    background-color: rgba(255,255,255,0.08);
+}
+
+/* Formulario */
+.retro-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.form-group input, .form-group textarea {
+    background-color: rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    color: var(--text-main);
+    font-family: var(--font-family);
+    font-size: 14px;
+    padding: 8px 12px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: var(--accent-color);
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.tui-btn {
+    background-color: var(--accent-color);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #1e1f29;
+    font-family: var(--font-family);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: opacity 0.2s, background-color 0.2s;
+}
+
+body.theme-onedark .tui-btn {
+    color: #1e2227;
+}
+
+body.theme-nord .tui-btn {
+    color: #2e3440;
+}
+
+.tui-btn:hover {
+    opacity: 0.9;
+}
+
+.tui-btn.btn-sec {
+    background-color: transparent;
+    border-color: rgba(255,255,255,0.15);
+    color: var(--text-main);
+}
+
+.tui-btn.btn-sec:hover {
+    background-color: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.3);
+}

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio interactivo de Desarrollador Full-Stack estilo Terminal Moderno. Explora proyectos y habilidades vía comandos o interfaz visual.">
+    <title>SarmientoOS - Developer Terminal</title>
+    <!-- Fuentes Modernas para Desarrolladores -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="theme-dracula blur-active">
+
+    <!-- Fondo dinámico sutil -->
+    <div class="bg-gradient-glow"></div>
+
+    <!-- Ventana de Terminal Moderna (macOS/Linux Desktop Style) -->
+    <div class="terminal-window">
+        
+        <!-- Barra de título de la Ventana -->
+        <div class="terminal-titlebar">
+            <div class="window-controls">
+                <span class="control-dot close" id="window-close-btn" title="Cerrar sesión"></span>
+                <span class="control-dot minimize" id="window-min-btn" title="Minimizar"></span>
+                <span class="control-dot maximize" id="window-max-btn" title="Maximizar (Pantalla Completa)"></span>
+            </div>
+            <div class="window-title">sarmiento@fullstack: ~/portfolio (bash)</div>
+            <div class="window-actions">
+                <!-- Dropdown de comandos estilo Command Palette -->
+                <div class="menu-item dropdown">
+                    <button class="menu-btn" id="commands-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+                        <svg class="icon-svg size-sm" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="8" x2="6" y2="8"></line><line x1="10" y1="8" x2="10" y2="8"></line><line x1="14" y1="8" x2="14" y2="8"></line><line x1="18" y1="8" x2="18" y2="8"></line><line x1="6" y1="12" x2="6" y2="12"></line><line x1="10" y1="12" x2="10" y2="12"></line><line x1="14" y1="12" x2="14" y2="12"></line><line x1="18" y1="12" x2="18" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>Acciones <span class="chevron">▼</span>
+                    </button>
+                    <ul class="dropdown-menu" id="commands-menu" role="menu">
+                        <li role="none"><a href="#" class="cmd-link" data-cmd="help" role="menuitem">help - Manual de comandos</a></li>
+                        <li role="none"><a href="#" class="cmd-link" data-cmd="neofetch" role="menuitem">neofetch - Información del sistema</a></li>
+                        <li role="none"><a href="#" class="cmd-link" data-cmd="about" role="menuitem">about - Sobre mí (Resumen)</a></li>
+                        <li role="none"><a href="#" class="cmd-link" data-cmd="skills" role="menuitem">skills - Habilidades técnicas</a></li>
+                        <li role="none"><a href="#" class="cmd-link" data-cmd="education" role="menuitem">education - Formación académica</a></li>
+                        <li role="none"><a href="#" class="cmd-link" data-cmd="languages" role="menuitem">languages - Idiomas dominados</a></li>
+                        <li role="none"><a href="#" class="cmd-link" data-cmd="competencies" role="menuitem">competencies - Competencias personales</a></li>
+                        <li role="none"><a href="#" class="cmd-link" data-cmd="projects" role="menuitem">projects - Portafolio de proyectos</a></li>
+                        <li role="none"><a href="#" class="cmd-link" data-cmd="contact" role="menuitem">contact - Enlaces de contacto</a></li>
+                        <li role="none"><a href="#" class="cmd-link" data-cmd="theme" role="menuitem">theme - Cambiar tema de colores</a></li>
+                        <li role="none"><a href="#" class="cmd-link" data-cmd="gui" role="menuitem">gui - Alternar CLI / Modo Visual</a></li>
+                        <li role="none"><a href="#" class="cmd-link" data-cmd="clear" role="menuitem">clear - Limpiar terminal</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Área de Contenido Principal (Pantalla) -->
+        <main class="system-container">
+            
+            <!-- PANTALLA DE ARRANQUE (DOCKER SIMULATOR) -->
+            <div id="boot-sequence" class="boot-container">
+                <pre class="boot-logo">
+      _                               _                     _ 
+  ___| | __ _ _ __ _ __ ___   ___ ___| |__   ___ _ __   ___| |
+ / __| |/ _` | '__| '_ ` _ \ / _ \ __| '_ \ / _ \ '__| / __| |
+ \__ \ | (_| | |  | | | | | |  __/__ | | | |  __/ |    \__ \_|
+ |___/_|\__,_|_|  |_| |_| |_|\___||__|_| |_|\___|_|    |___(_)
+                
+                Starting container sarmiento-dev-env:latest...
+                </pre>
+                <div class="boot-log" id="boot-log-output"></div>
+                <div class="boot-prompt" id="boot-press-key" style="display: none;">
+                    Press [ENTER] to attach terminal session...
+                </div>
+            </div>
+
+            <!-- MODO CLI: TERMINAL INTERACTIVA -->
+            <div id="cli-mode" class="cli-container" style="display: none;">
+                <div class="terminal-history" id="terminal-history" role="log" aria-live="polite">
+                    <div class="system-welcome">
+                        <p class="ansi-success">Container initialized successfully!</p>
+                        <p>Welcome to SarmientoOS developer workspace. Type <span class="highlight">help</span> to view commands or use the top menu.</p>
+                        <p>Toggle **Visual Mode** dashboard with <span class="highlight">gui</span> or the button in the footer.</p>
+                        <br>
+                    </div>
+                </div>
+                <div class="terminal-input-line">
+                    <span class="prompt-user">guest@sarmiento-os</span><span class="prompt-separator">:</span><span class="prompt-path">~/portfolio</span><span class="prompt-char">$</span>
+                    <div class="input-wrapper">
+                        <input type="text" id="terminal-input" autocomplete="off" autofocus spellcheck="false" aria-label="Terminal command input">
+                        <span class="custom-cursor" id="custom-cursor"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODO VISUAL: DASHBOARD TUI MODERNO -->
+            <div id="gui-mode" class="tui-container" style="display: none;">
+                
+                <!-- Barra de pestañas modernas -->
+                <nav class="tui-nav" role="tablist">
+                    <button class="tui-tab active" id="tab-btn-sys" data-tab="tab-sys" role="tab" aria-selected="true" aria-controls="panel-sys">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>Dashboard
+                    </button>
+                    <button class="tui-tab" id="tab-btn-about" data-tab="tab-about" role="tab" aria-selected="false" aria-controls="panel-about">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Perfil
+                    </button>
+                    <button class="tui-tab" id="tab-btn-skills" data-tab="tab-skills" role="tab" aria-selected="false" aria-controls="panel-skills">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>Habilidades
+                    </button>
+                    <button class="tui-tab" id="tab-btn-projects" data-tab="tab-projects" role="tab" aria-selected="false" aria-controls="panel-projects">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>Proyectos
+                    </button>
+                    <button class="tui-tab" id="tab-btn-contact" data-tab="tab-contact" role="tab" aria-selected="false" aria-controls="panel-contact">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>Contacto
+                    </button>
+                </nav>
+
+                <!-- Panel de Contenido -->
+                <div class="tui-window">
+                    
+                    <!-- TAB: ESTADÍSTICAS Y SISTEMA -->
+                    <section class="tui-panel active" id="panel-sys" role="tabpanel" aria-labelledby="tab-btn-sys">
+                        <div class="tui-grid-2">
+                            <div class="tui-box">
+                                <div class="tui-box-title">System Metrics</div>
+                                <div class="sys-graph-container">
+                                    <div class="sys-bar">
+                                        <span class="bar-lbl">CPU 0: 42%</span>
+                                        <div class="bar-fill" style="width: 42%;"></div>
+                                    </div>
+                                    <div class="sys-bar">
+                                        <span class="bar-lbl">CPU 1: 28%</span>
+                                        <div class="bar-fill" style="width: 28%;"></div>
+                                    </div>
+                                    <div class="sys-bar">
+                                        <span class="bar-lbl">RAM Usage: 64%</span>
+                                        <div class="bar-fill" style="width: 64%;"></div>
+                                    </div>
+                                    <div class="sys-bar">
+                                        <span class="bar-lbl">Disk Usage: 80%</span>
+                                        <div class="bar-fill" style="width: 80%;"></div>
+                                    </div>
+                                </div>
+                                <p class="sys-info-desc">Local development environment containerized with Docker. Mathematical co-processor and virtual buffers initialized.</p>
+                            </div>
+                            <div class="tui-box">
+                                <div class="tui-box-title">Environment Specs</div>
+                                <table class="sys-table">
+                                    <tr><td>OS:</td><td>SarmientoOS Linux Cloud Instance</td></tr>
+                                    <tr><td>Architecture:</td><td>x86_64 Virtualized</td></tr>
+                                    <tr><td>Uptime:</td><td id="sys-uptime">0h 0m 0s</td></tr>
+                                    <tr><td>Shell Type:</td><td>Bash (v5.1-compat)</td></tr>
+                                    <tr><td>Terminal UI:</td><td>VGA Emulated (256 Colors)</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tui-box" style="margin-top: 15px;">
+                            <div class="tui-box-title">Container Console Logs</div>
+                            <div class="sys-log-stream">
+                                <p class="ansi-success">[  OK  ] Initialized graphical buffer interface.</p>
+                                <p class="ansi-success">[  OK  ] Mounted workspace directory /var/www/portfolio.</p>
+                                <p class="ansi-success">[  OK  ] Yarn package server listening on port 3000.</p>
+                                <p class="ansi-warn">[ WARN ] Serial mouse emulation suspended; keyboard hooks enabled.</p>
+                                <p class="blink-fast ansi-info">&gt; SSH connection established from remote node... CONNECT 10Gbps/TCP</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- TAB: PERFIL -->
+                    <section class="tui-panel" id="panel-about" role="tabpanel" aria-labelledby="tab-btn-about" style="display: none;">
+                        <div class="tui-box">
+                            <div class="tui-box-title">Developer Identity</div>
+                            <div class="bio-layout">
+                                <div class="bio-avatar-container">
+                                    <!-- Avatar ASCII moderno -->
+                                    <pre class="bio-avatar-ascii">
+   /\_/\
+  ( o.o )
+   &gt; ^ &lt;
+[Developer]
+                                    </pre>
+                                </div>
+                                <div class="bio-text">
+                                    <h3>Santiago Sarmiento</h3>
+                                    <p class="role-subtitle">Desarrollador de Software</p>
+                                    <p>Desarrollador de software full-stack con uso de inteligencia artificial aplicada al desarrollo. Experiencia en buenas prácticas de programación, estructuración de proyectos y control de versiones con Git. Perfil con aprendizaje continuo, orientación a resultados y trabajo en equipo en entornos de desarrollo colaborativo.</p>
+                                    <blockquote>"Escribir código eficiente hoy ahorra ciclos de reloj e infraestructura mañana."</blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Nueva cuadrícula de formación, idiomas y competencias -->
+                        <div class="tui-grid-3" style="margin-top: 15px;">
+                            <div class="tui-box">
+                                <div class="tui-box-title">Formación Académica</div>
+                                <ul class="skills-list" style="padding-left: 0;">
+                                    <li style="margin-bottom: 15px; display: block;">
+                                        <strong>Técnico en desarrollo de software con IA</strong><br>
+                                        <span style="font-size: 12px; color: var(--text-dim);">Campuslands, Floridablanca</span><br>
+                                        <span style="font-size: 11px; color: var(--accent-color);">Dic 2025 - Oct 2026</span>
+                                    </li>
+                                    <li style="display: block;">
+                                        <strong>Bachiller</strong><br>
+                                        <span style="font-size: 12px; color: var(--text-dim);">Instituto Integrado Francisco Serrano Muñoz</span><br>
+                                        <span style="font-size: 11px; color: var(--accent-color);">Dic 2025</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tui-box">
+                                <div class="tui-box-title">Competencias</div>
+                                <ul class="skills-list" style="padding-left: 0;">
+                                    <li><span class="skill-dot">◆</span> Liderazgo / Creatividad</li>
+                                    <li><span class="skill-dot">◆</span> Empatía / Disciplina</li>
+                                    <li><span class="skill-dot">◆</span> Resiliencia / Comunicación</li>
+                                    <li><span class="skill-dot">◆</span> Paciente / Adaptabilidad</li>
+                                </ul>
+                            </div>
+                            <div class="tui-box">
+                                <div class="tui-box-title">Idiomas</div>
+                                <ul class="skills-list" style="padding-left: 0;">
+                                    <li><span class="skill-dot">◆</span> Español (Nativo - C2)</li>
+                                    <li><span class="skill-dot">◆</span> Inglés (Intermedio - B2)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- TAB: HABILIDADES -->
+                    <section class="tui-panel" id="panel-skills" role="tabpanel" aria-labelledby="tab-btn-skills" style="display: none;">
+                        <div class="tui-grid-3">
+                            <div class="tui-box">
+                                <div class="tui-box-title">Frontend Stack</div>
+                                <ul class="skills-list" style="padding-left: 0;">
+                                    <li><span class="skill-dot">◆</span> JavaScript</li>
+                                    <li><span class="skill-dot">◆</span> CSS</li>
+                                    <li><span class="skill-dot">◆</span> HTML</li>
+                                </ul>
+                            </div>
+                            <div class="tui-box">
+                                <div class="tui-box-title">Backend &amp; APIs</div>
+                                <ul class="skills-list" style="padding-left: 0;">
+                                    <li><span class="skill-dot">◆</span> Python</li>
+                                    <li><span class="skill-dot">◆</span> SQL</li>
+                                    <li><span class="skill-dot">◆</span> N8N</li>
+                                </ul>
+                            </div>
+                            <div class="tui-box">
+                                <div class="tui-box-title">DevOps &amp; Tools</div>
+                                <ul class="skills-list" style="padding-left: 0;">
+                                    <li><span class="skill-dot">◆</span> Git</li>
+                                    <li><span class="skill-dot">◆</span> Docker</li>
+                                    <li><span class="skill-dot">◆</span> Scrum</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- TAB: PROYECTOS -->
+                    <section class="tui-panel" id="panel-projects" role="tabpanel" aria-labelledby="tab-btn-projects" style="display: none;">
+                        <div class="tui-grid-2" id="gui-projects-container">
+                            <div class="tui-box project-box">
+                                <div class="tui-box-title">Hackaton Visual Agents</div>
+                                <p class="project-desc">Participación en Hackathon de Machine Learning liderando el desarrollo de un software de monitoreo y prevención de accidentes. Implementación de librerías de Python para procesamiento con IA, diseño de la interfaz con JavaScript, HTML y CSS, e integración de flujos automatizados en N8N para la gestión de alertas y control de incidentes.</p>
+                                <p class="project-tags"><span>Python</span> <span>JavaScript</span> <span>HTML</span> <span>CSS</span> <span>N8N</span> <span>AI/ML</span></p>
+                                <div class="project-actions">
+                                    <a href="#" class="retro-link"><svg class="icon-svg size-sm" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>Demo</a>
+                                    <a href="#" class="retro-link"><svg class="icon-svg size-sm" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Code</a>
+                                </div>
+                            </div>
+                            <div class="tui-box project-box">
+                                <div class="tui-box-title">Sistema Inteligente de Reportes Viales</div>
+                                <p class="project-desc">Desarrollo de un flujo automatizado con IA para la gestión y clasificación de reportes viales realizados por ciudadanos. Implementación de la interfaz con JavaScript, HTML y CSS, y conexión con una base de datos MySQL para optimizar el análisis y procesamiento de los reportes.</p>
+                                <p class="project-tags"><span>JavaScript</span> <span>HTML</span> <span>CSS</span> <span>MySQL</span> <span>AI/ML</span></p>
+                                <div class="project-actions">
+                                    <a href="#" class="retro-link"><svg class="icon-svg size-sm" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>Demo</a>
+                                    <a href="#" class="retro-link"><svg class="icon-svg size-sm" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- TAB: CONTACTO -->
+                    <section class="tui-panel" id="panel-contact" role="tabpanel" aria-labelledby="tab-btn-contact" style="display: none;">
+                        <div class="tui-box">
+                            <div class="tui-box-title">Contact Form</div>
+                            <form class="retro-form" id="contact-form" onsubmit="event.preventDefault(); alert('Mensaje enviado (Simulación)');">
+                                <div class="form-group">
+                                    <label for="form-name">Nombre / Compañía:</label>
+                                    <input type="text" id="form-name" required placeholder="Tu Nombre">
+                                </div>
+                                <div class="form-group">
+                                    <label for="form-email">Correo Electrónico:</label>
+                                    <input type="email" id="form-email" required placeholder="nombre@servidor.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="form-msg">Mensaje:</label>
+                                    <textarea id="form-msg" required rows="4" placeholder="Escribe tu mensaje..."></textarea>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="tui-btn">Enviar Mensaje</button>
+                                    <button type="reset" class="tui-btn btn-sec">Limpiar</button>
+                                </div>
+                            </form>
+                            <div class="contact-links" style="margin-top: 20px;">
+                                <p><strong>Otros canales profesionales:</strong></p>
+                                <div class="contact-cards">
+                                    <a href="https://github.com/SantiSarmiento11?tab=overview&from=2026-06-01&to=2026-06-28" target="_blank" class="contact-card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37(CI/CD)c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>GitHub</a>
+                                    <a href="https://www.linkedin.com/in/santiago-andrés-sarmiento-martínez-91a035396/" target="_blank" class="contact-card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>LinkedIn</a>
+                                    <a href="mailto:sansamablogers@gmail.com" class="contact-card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>Email</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Barra de Estado Inferior Estilo VS Code Statusbar -->
+        <footer class="terminal-statusbar">
+            <div class="sb-left">
+                <span class="sb-item sb-mode-badge" id="toggle-gui-btn" title="Alternar entre CLI y Visual [F9]">
+                    <svg class="icon-svg size-sm" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>Layout: <span id="current-mode-lbl" style="font-weight: bold;">CLI</span>
+                </span>
+                <span class="sb-item">
+                    <svg class="icon-svg size-sm" viewBox="0 0 24 24"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 15V9a4 4 0 0 0-4-4H9"></path><line x1="6" y1="9" x2="6" y2="15"></line></svg>Git: <span class="highlight">main</span>
+                </span>
+            </div>
+            <div class="sb-center">
+                <span class="sb-item select-option" id="toggle-theme-btn" title="Cambiar tema de color">
+                    <svg class="icon-svg size-sm" viewBox="0 0 24 24"><path d="M12 22C17.52 22 22 17.52 22 12S17.52 2 12 2 2 6.52 2 12s4.48 10 10 10zM12 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-4 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm8 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-4 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"></path></svg>Tema: <span id="theme-lbl-active">Dracula</span>
+                </span>
+                <span class="sb-item select-option" id="toggle-blur-btn" title="Activar/Desactivar efecto traslúcido">
+                    <svg class="icon-svg size-sm" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>Glass: <span id="blur-lbl-active">SI</span>
+                </span>
+            </div>
+            <div class="sb-right">
+                <span class="sb-item hide-mobile">UTF-8</span>
+                <span class="sb-item hide-mobile">LF</span>
+                <span class="sb-item clock-item" id="footer-clock">12:00:00 AM</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Scripts Modulares -->
+    <script src="js/data.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/autotyper.js"></script>
+    <script src="js/cli.js"></script>
+    <script src="js/gui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+/* ----------------------------------------------------
+   SarmientoOS Modern Developer Terminal - CLI Terminal Layout
+   ---------------------------------------------------- */
+
+.system-container {
+    flex: 1;
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+
+.system-container::-webkit-scrollbar {
+    width: 8px;
+}
+.system-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+.system-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+.system-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ----------------------------------------------------
+   Boot Sequence Screen (Docker Loader)
+   ---------------------------------------------------- */
+.boot-container {
+    margin: auto;
+    width: 100%;
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.boot-logo {
+    font-size: 11px;
+    line-height: 1.2;
+    white-space: pre;
+    color: var(--accent-color);
+    text-shadow: var(--glow-effect);
+}
+
+.boot-log {
+    font-size: 14px;
+    color: var(--text-main);
+    max-height: 250px;
+    overflow-y: hidden;
+}
+
+.boot-log p {
+    margin-bottom: 6px;
+}
+
+.boot-prompt {
+    font-size: 15px;
+    color: var(--success-color);
+    text-align: center;
+    margin-top: 15px;
+    animation: blink 1.2s step-end infinite;
+}
+
+/* ----------------------------------------------------
+   CLI Mode (Línea de Comandos)
+   ---------------------------------------------------- */
+.cli-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.terminal-history {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 12px;
+    padding-right: 5px;
+}
+
+.terminal-history p {
+    margin-bottom: 6px;
+    word-break: break-word;
+}
+
+.terminal-history .highlight {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+/* Ansi style coloring */
+.ansi-success { color: var(--success-color); }
+.ansi-warn { color: var(--warn-color); }
+.ansi-info { color: var(--link-color); }
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 15px;
+}
+
+.prompt-user {
+    color: var(--success-color);
+    font-weight: 600;
+}
+.prompt-separator {
+    color: var(--text-main);
+}
+.prompt-path {
+    color: var(--link-color);
+}
+.prompt-char {
+    color: var(--text-main);
+    margin-right: 8px;
+}
+
+.input-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#terminal-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-main);
+    font-family: var(--font-family);
+    font-size: 15px;
+    width: 100%;
+    caret-color: transparent;
+}
+
+.custom-cursor {
+    position: absolute;
+    left: 0;
+    width: 8px;
+    height: 15px;
+    background-color: var(--accent-color);
+    animation: blink-cursor 0.8s step-end infinite;
+    pointer-events: none;
+}
+
+@keyframes blink-cursor {
+    from, to { background-color: transparent; }
+    50% { background-color: var(--accent-color); }
+}
+
+/* Neofetch layout */
+.neofetch-layout {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    background-color: rgba(255,255,255,0.02);
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+.neofetch-ascii {
+    font-family: var(--font-family);
+    font-size: 13px;
+    line-height: 1.2;
+    white-space: pre;
+    color: var(--accent-color);
+}
+.neofetch-info {
+    font-size: 13.5px;
+    line-height: 1.6;
+}
+@media (max-width: 600px) {
+    .neofetch-layout {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+}
