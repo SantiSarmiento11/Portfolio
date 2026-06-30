@@ -79,3 +79,50 @@ function fluctuateCpuStats() {
     }
 }
 setInterval(fluctuateCpuStats, 2000);
+
+// Enlazar eventos de la pestaña Inicio (Lanzador de terminal y Lightbox de Diploma)
+window.addEventListener("load", () => {
+    // Botón Lanzador de Terminal desde el panel Inicio
+    const launchTerminalBtn = document.getElementById("launch-terminal-btn");
+    if (launchTerminalBtn) {
+        launchTerminalBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            toggleMode();
+        });
+    }
+
+    // Modal Lightbox para zoom del Diploma de Hackaton
+    const diplomaContainer = document.querySelector(".diploma-container");
+    const diplomaLightbox = document.getElementById("diploma-lightbox");
+    const lightboxCloseBtn = document.getElementById("lightbox-close-btn");
+
+    if (diplomaContainer && diplomaLightbox) {
+        diplomaContainer.addEventListener("click", () => {
+            diplomaLightbox.classList.add("active");
+            diplomaLightbox.setAttribute("aria-hidden", "false");
+        });
+
+        if (lightboxCloseBtn) {
+            lightboxCloseBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                diplomaLightbox.classList.remove("active");
+                diplomaLightbox.setAttribute("aria-hidden", "true");
+            });
+        }
+
+        diplomaLightbox.addEventListener("click", (e) => {
+            if (e.target === diplomaLightbox) {
+                diplomaLightbox.classList.remove("active");
+                diplomaLightbox.setAttribute("aria-hidden", "true");
+            }
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && diplomaLightbox.classList.contains("active")) {
+                diplomaLightbox.classList.remove("active");
+                diplomaLightbox.setAttribute("aria-hidden", "true");
+            }
+        });
+    }
+});
+

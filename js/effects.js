@@ -6,7 +6,7 @@
 let currentTheme = "dracula";
 let isBlurActive = true;
 let isSessionActive = true;
-let currentMode = "BOOT"; // BOOT, CLI, GUI
+let currentMode = "GUI"; // BOOT, CLI, GUI
 let startTime = Date.now();
 
 // DOM elements

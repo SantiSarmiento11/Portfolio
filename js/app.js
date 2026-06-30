@@ -10,6 +10,7 @@ const bootPressKey = document.getElementById("boot-press-key");
 // Statusbar buttons
 const toggleThemeBtn = document.getElementById("toggle-theme-btn");
 const toggleBlurBtn = document.getElementById("toggle-blur-btn");
+const toggleGuiBtn = document.getElementById("toggle-gui-btn");
 
 // Window top dots
 const windowCloseBtn = document.getElementById("window-close-btn");
@@ -85,12 +86,13 @@ function skipBoot() {
 // DOM EVENT LISTENERS
 // ---------------------------------------------------------
 window.addEventListener("load", () => {
-    // Initiate Docker log loader
-    printBootLogs();
+    // Iniciar directamente en modo visual (GUI), omitir boot logs inicialmente
+    // printBootLogs();
     
     // Statusbar Toggles
     if (toggleThemeBtn) toggleThemeBtn.addEventListener("click", cycleTheme); // Declared globally in effects.js
     if (toggleBlurBtn) toggleBlurBtn.addEventListener("click", toggleBlur); // Declared globally in effects.js
+    if (toggleGuiBtn) toggleGuiBtn.addEventListener("click", toggleMode); // Declared globally in gui.js
     
     // Window control buttons
     if (windowCloseBtn) windowCloseBtn.addEventListener("click", closeSession); // Declared globally in effects.js
@@ -104,6 +106,12 @@ window.addEventListener("load", () => {
             const isOpen = dropdownBtn.getAttribute("aria-expanded") === "true";
             dropdownBtn.setAttribute("aria-expanded", !isOpen);
             dropdownBtn.parentElement.classList.toggle("open");
+            
+            // Ocultar ayuda de celulares al abrir el menú de comandos
+            const mobileTooltip = document.getElementById("mobile-helper-tooltip");
+            if (mobileTooltip) {
+                mobileTooltip.style.display = "none";
+            }
         });
         
         document.addEventListener("click", () => {
@@ -176,10 +184,11 @@ document.addEventListener("keydown", (e) => {
     }
     
     if (currentMode === "GUI") {
-        if (e.key === "F1") { e.preventDefault(); document.getElementById("tab-btn-sys").click(); }
-        if (e.key === "F2") { e.preventDefault(); document.getElementById("tab-btn-about").click(); }
-        if (e.key === "F3") { e.preventDefault(); document.getElementById("tab-btn-skills").click(); }
-        if (e.key === "F4") { e.preventDefault(); document.getElementById("tab-btn-projects").click(); }
-        if (e.key === "F5") { e.preventDefault(); document.getElementById("tab-btn-contact").click(); }
+        if (e.key === "F1") { e.preventDefault(); document.getElementById("tab-btn-home").click(); }
+        if (e.key === "F2") { e.preventDefault(); document.getElementById("tab-btn-sys").click(); }
+        if (e.key === "F3") { e.preventDefault(); document.getElementById("tab-btn-about").click(); }
+        if (e.key === "F4") { e.preventDefault(); document.getElementById("tab-btn-skills").click(); }
+        if (e.key === "F5") { e.preventDefault(); document.getElementById("tab-btn-projects").click(); }
+        if (e.key === "F6") { e.preventDefault(); document.getElementById("tab-btn-contact").click(); }
     }
 });

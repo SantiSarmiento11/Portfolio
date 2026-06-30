@@ -414,3 +414,410 @@ body.theme-nord .tui-btn {
     background-color: rgba(255,255,255,0.06);
     border-color: rgba(255,255,255,0.3);
 }
+
+/* ----------------------------------------------------
+   SarmientoOS Modern Developer Terminal - Inicio Panel Styles
+   ---------------------------------------------------- */
+.home-welcome-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.welcome-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+}
+
+.welcome-subtitle {
+    font-size: 14px;
+    color: var(--text-dim);
+}
+
+/* Profile Card Styling */
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.profile-header {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.profile-photo-container {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background-color: var(--header-bg);
+    flex-shrink: 0;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.profile-photo-container:hover .profile-photo {
+    transform: scale(1.1);
+}
+
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    padding: 4px;
+}
+
+.profile-photo-container:hover .photo-overlay {
+    opacity: 1;
+}
+
+.profile-quick-info h3 {
+    font-size: 18px;
+    margin-bottom: 4px;
+    color: var(--text-main);
+}
+
+.role-badge {
+    font-size: 13px;
+    color: var(--link-color);
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.status-indicator {
+    font-size: 11px;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-dot.online {
+    background-color: var(--success-color);
+    box-shadow: 0 0 8px var(--success-color);
+    animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+.profile-intro-text {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text-main);
+    opacity: 0.85;
+}
+
+/* Diploma Card Styling */
+.diploma-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.diploma-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--header-bg);
+    margin-bottom: 12px;
+    cursor: zoom-in;
+}
+
+.diploma-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.diploma-container:hover .diploma-image {
+    transform: scale(1.05);
+}
+
+.diploma-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 31, 41, 0.4);
+    backdrop-filter: blur(2px);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.diploma-container:hover .diploma-overlay {
+    opacity: 1;
+}
+
+.diploma-overlay span {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 12px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 4px;
+    border: 1px solid var(--accent-color);
+}
+
+.diploma-details h4 {
+    font-size: 14px;
+    color: var(--accent-color);
+    margin-bottom: 4px;
+}
+
+.diploma-details p {
+    font-size: 12.5px;
+    color: var(--text-dim);
+    line-height: 1.5;
+}
+
+/* Terminal Launcher Box Styling */
+.terminal-launcher-box {
+    background: linear-gradient(135deg, var(--box-bg) 0%, rgba(189, 147, 249, 0.04) 100%);
+    border: 1px solid var(--border-color);
+}
+
+.launcher-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .launcher-layout {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+}
+
+.launcher-desc {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    text-align: left;
+}
+
+.prompt-symbol {
+    font-family: var(--font-family);
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--accent-color);
+    line-height: 1;
+}
+
+.launcher-desc h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+    color: var(--text-main);
+}
+
+.launcher-desc p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.55;
+}
+
+.launch-terminal-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e1f29 !important;
+    background-color: var(--accent-color);
+    box-shadow: 0 0 12px rgba(189, 147, 249, 0.25);
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.theme-onedark .launch-terminal-btn {
+    color: #1e2227 !important;
+}
+
+body.theme-nord .launch-terminal-btn {
+    color: #2e3440 !important;
+}
+
+.launch-terminal-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 16px rgba(189, 147, 249, 0.4);
+    opacity: 0.95;
+}
+
+.launch-terminal-btn:active {
+    transform: translateY(1px);
+}
+
+/* Modal Lightbox for Certificate Zoom */
+.diploma-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(10, 11, 14, 0.9);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.diploma-lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 85%;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.diploma-lightbox.active .lightbox-content {
+    transform: scale(1);
+}
+
+.lightbox-img {
+    display: block;
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    user-select: none;
+}
+
+.lightbox-close:hover {
+    background-color: var(--accent-color);
+    color: #1e1f29;
+}
+
+/* Tooltip informativo para celulares en barra de título */
+.mobile-helper-tooltip {
+    display: none; /* Oculto por defecto en pantallas grandes */
+}
+
+@media (max-width: 768px) {
+    .mobile-helper-tooltip {
+        display: block;
+        position: absolute;
+        top: 45px;
+        right: 15px;
+        background-color: var(--warn-color);
+        color: #1e1f29;
+        font-family: var(--font-family);
+        font-size: 11px;
+        font-weight: 600;
+        padding: 8px 12px;
+        border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        z-index: 999;
+        pointer-events: none;
+        animation: float-tooltip 2.5s ease-in-out infinite;
+        max-width: 250px;
+        text-align: right;
+        line-height: 1.4;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+    }
+    
+    .mobile-helper-tooltip::after {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        right: 25px;
+        border-width: 6px;
+        border-style: solid;
+        border-color: transparent transparent var(--warn-color) transparent;
+    }
+}
+
+body.theme-onedark .mobile-helper-tooltip {
+    color: #1e2227;
+}
+
+body.theme-nord .mobile-helper-tooltip {
+    color: #2e3440;
+}
+
+@keyframes float-tooltip {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
