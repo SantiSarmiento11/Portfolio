@@ -97,3 +97,18 @@ Desarrollado bajo una arquitectura ligera orientada a estandares web modernos, o
   - Safari 14+
   - Microsoft Edge 90+
 - Servidor web estatico local (Live Server, Python HTTP Server o Node.js `serve`).
+
+### Parametros de Configuracion del Portafolio
+
+El archivo `js/data.js` centraliza toda la informacion del portafolio:
+
+```javascript
+// Configuracion centralizada de perfil y proyectos
+const USER_PROFILE = {
+    name: "Santiago Sarmiento",
+    title: "Software Engineer & Backend Specialist",
+    github: "https://github.com/SantiSarmiento11",
+    email: "sansamablogers@gmail.com",
+    defaultTheme: "dracula"
+};
+```
