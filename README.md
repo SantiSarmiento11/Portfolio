@@ -146,3 +146,11 @@ npx serve . -p 3000
 ```
 
 Abra su navegador favorito en la URL: `http://localhost:3000`
+
+## Funcionamiento del Sistema
+
+El ciclo de vida del portafolio se divide en las siguientes etapas:
+1. Carga inicial del DOM y verificacion de tema guardado en `localStorage.getItem('terminal_theme')`.
+2. Inicializacion del autotyper con impresion secuencial de bienvenida y banner ASCII.
+3. Activacion del cursor interactivo y preparacion del prompt de comandos `sarmiento@fullstack:~$`.
+4. Escucha de teclado, gestion de buffers de texto y ejecucion de comandos parsedos.
