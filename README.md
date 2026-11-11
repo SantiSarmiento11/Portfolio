@@ -10,3 +10,11 @@ Experiencia web interactiva que simula un entorno de consola UNIX y sistema de v
 ## Resumen Ejecutivo
 
 Los portafolios estaticos convencionales a menudo carecen de interactividad y fallan al transmitir las capacidades tecnicas de un desarrollador de software. SarmientoOS reimagina la presentacion profesional ofreciendo un entorno inmersivo dual: una consola CLI con comandos tipo bash completamente funcionales para entusiastas de la terminal, combinada con una interfaz gráfica asistida por controles visuales, temas dinámicos e integración fluida.
+
+## Alcance y Objetivos de Negocio
+
+- Demostracion practica de competencias avanzadas en JavaScript vanilla, manipulacion del DOM y animaciones basadas en CSS moderno.
+- Soporte dual de interaccion: terminal textual por comandos e interfaz grafica asistida por clics (GUI).
+- Motor de temas visuales en tiempo real (Dracula, Nord, Monokai, Matrix, Cyberpunk).
+- Simulador de ejecucion de comandos con autocompletado mediante tecla Tab y navegacion de historial con flechas Arriba/Abajo.
+- Respaldo de configuracion y preferencias de sesion mediante LocalStorage.
