@@ -213,3 +213,8 @@ npx lighthouse-ci collect --url=http://localhost:3000
 ## Registro de Eventos y Metricas de Uso
 
 La aplicacion mantiene un registro de eventos en la consola del navegador (`console.debug`) con fines de depuracion, rastreando comandos ingresados y cambios de estado de temas, sin recopilar datos personales sensibles del visitante.
+
+## Consideraciones de Seguridad y Privacidad
+
+- Sanitizacion de texto antes de la insercion en el DOM utilizando `textContent` en lugar de `innerHTML` no validado, mitigando riesgos de inyeccion de scripts entre sitios (XSS).
+- Politica de Content Security Policy (CSP) compatible con recursos externos restringidos exclusivamente a Google Fonts.
