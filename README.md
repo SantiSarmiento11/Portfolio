@@ -18,3 +18,11 @@ Los portafolios estaticos convencionales a menudo carecen de interactividad y fa
 - Motor de temas visuales en tiempo real (Dracula, Nord, Monokai, Matrix, Cyberpunk).
 - Simulador de ejecucion de comandos con autocompletado mediante tecla Tab y navegacion de historial con flechas Arriba/Abajo.
 - Respaldo de configuracion y preferencias de sesion mediante LocalStorage.
+
+## Arquitectura del Sistema
+
+La aplicacion se estructura como una aplicacion web de una sola pagina (SPA) completamente modular sin dependencias pesadas de frameworks:
+1. Capa de Presentacion (`index.html`, modulos CSS desacoplados).
+2. Capa de Logica de Terminal y Parser de Comandos (`cli.js`, `autotyper.js`).
+3. Capa de Gestion de Interfaz y Ventanas (`gui.js`, `effects.js`).
+4. Capa de Datos Estructurados (`data.js`) y Controlador Principal (`app.js`).
