@@ -70,3 +70,9 @@ Portfolio/
 ## Stack Tecnologico
 
 Desarrollado bajo una arquitectura ligera orientada a estandares web modernos, optimizando rendimiento y eliminando dependencias externas innecesarias.
+
+### Motor de Ejecucion y Almacenamiento Web
+
+- ![JavaScript](https://img.shields.io/badge/JavaScript_ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) Motor funcional de evaluacion de comandos, control de eventos y logica de navegacion.
+- ![Web Storage](https://img.shields.io/badge/LocalStorage_API-0052CC?style=for-the-badge&logo=googlechrome&logoColor=white) Persistencia de preferencias de temas y configuracion entre sesiones de usuario.
+- ![GNU Bash](https://img.shields.io/badge/Bash_CLI_Paradigm-4EAA25?style=for-the-badge&logo=gnubash&logoColor=white) Paradigma de emulacion de terminal de comandos UNIX/Linux.
