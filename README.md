@@ -224,3 +224,9 @@ La aplicacion mantiene un registro de eventos en la consola del navegador (`cons
 El portafolio esta optimizado para ser alojado en plataformas estaticas de borde (Edge Hosting) de alta velocidad:
 - **GitHub Pages**: Despliegue continuo automatico desde la rama `main`.
 - **Vercel** o **Netlify**: Alojamiento global con certificados SSL/TLS gratuitos y compresion Brotli automatica.
+
+## Optimizacion de Rendimiento y Carga
+
+- Cero frameworks pesados: Tamano total del bundle HTML/CSS/JS inferior a 80 KB comprimido.
+- Fuentes web cargadas de forma asincrona mediante directivas `preconnect` y `swap`.
+- Carga perezosa (lazy loading) en recursos multimedia e imagenes de diplomas.
