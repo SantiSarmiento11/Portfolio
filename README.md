@@ -245,3 +245,9 @@ El portafolio esta optimizado para ser alojado en plataformas estaticas de borde
 2. Crear una rama de funcionalidad (`git checkout -b feature/nuevo-tema-nordic`).
 3. Registrar cambios aplicando Conventional Commits (`git commit -m 'feat: adicionar tema de colores nordic frost'`).
 4. Publicar la rama y abrir un Pull Request con captura de pantalla demostrativa.
+
+## Autoria y Creditos del Proyecto
+
+Creado y estructurado por [Santiago Sarmiento](https://github.com/SantiSarmiento11).
+
+Inspirado en la potencia, minimalismo y versatilidad de los entornos de terminal de desarrollo UNIX.
