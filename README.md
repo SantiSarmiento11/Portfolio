@@ -199,3 +199,13 @@ Cuando se ingresa un comando no reconocido:
 - Validacion sintactica de codigo JavaScript utilizando ESLint.
 - Verificacion de contraste y accesibilidad cromatica segun guias WCAG 2.1 AA en todos los temas.
 - Comprobacion de adaptabilidad en dispositivos moviles, tabletas y monitores ultrapanoramicos.
+
+### Comandos de Analisis Estatico y Calidad
+
+```bash
+# Ejecutar linter sobre los scripts de la aplicacion
+npx eslint js/**/*.js
+
+# Validar accesibilidad y mejores practicas con Lighthouse CLI
+npx lighthouse-ci collect --url=http://localhost:3000
+```
