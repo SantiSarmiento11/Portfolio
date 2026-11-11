@@ -76,3 +76,9 @@ Desarrollado bajo una arquitectura ligera orientada a estandares web modernos, o
 - ![JavaScript](https://img.shields.io/badge/JavaScript_ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) Motor funcional de evaluacion de comandos, control de eventos y logica de navegacion.
 - ![Web Storage](https://img.shields.io/badge/LocalStorage_API-0052CC?style=for-the-badge&logo=googlechrome&logoColor=white) Persistencia de preferencias de temas y configuracion entre sesiones de usuario.
 - ![GNU Bash](https://img.shields.io/badge/Bash_CLI_Paradigm-4EAA25?style=for-the-badge&logo=gnubash&logoColor=white) Paradigma de emulacion de terminal de comandos UNIX/Linux.
+
+### Interfaz, Tipografia y Diseno Visual
+
+- ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) Semantica estructural garantizando accesibilidad y compatibilidad con lectores de pantalla.
+- ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) Variables nativas CSS (Custom Properties), efectos de desenfoque y diseno responsivo.
+- ![Google Fonts](https://img.shields.io/badge/Google_Fonts-4285F4?style=for-the-badge&logo=googlefonts&logoColor=white) Tipografias monoespaciadas para desarrolladores: Fira Code y JetBrains Mono.
