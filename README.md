@@ -112,3 +112,13 @@ const USER_PROFILE = {
     defaultTheme: "dracula"
 };
 ```
+
+## Guia de Instalacion y Despliegue Local
+
+1. Clonar el repositorio:
+```bash
+git clone https://github.com/SantiSarmiento11/Portfolio.git
+cd Portfolio
+```
+
+2. No se requieren pasos de compilacion o transpilacion externa gracias a la arquitectura nativa en JavaScript.
