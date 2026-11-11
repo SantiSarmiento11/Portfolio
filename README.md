@@ -238,3 +238,10 @@ El portafolio esta optimizado para ser alojado en plataformas estaticas de borde
 | El tema seleccionado no se guarda al recargar | LocalStorage deshabilitado o bloqueado por politicas del navegador | Verificar que el navegador no este en modo incognito estricto con bloqueo de almacenamiento local. |
 | Sonidos de tipeo no se escuchan | Politica de reproduccion de audio bloqueada | El usuario debe interactuar con el documento (hacer clic) antes de que el AudioContext pueda activarse. |
 | Fuentes monoespaciadas no cargan | Restriccion de red hacia Google Fonts | Las reglas CSS cuentan con fallback a fuentes locales del sistema: `Consolas, Menlo, Monaco, monospace`. |
+
+## Guia de Contribucion
+
+1. Realizar un Fork del repositorio.
+2. Crear una rama de funcionalidad (`git checkout -b feature/nuevo-tema-nordic`).
+3. Registrar cambios aplicando Conventional Commits (`git commit -m 'feat: adicionar tema de colores nordic frost'`).
+4. Publicar la rama y abrir un Pull Request con captura de pantalla demostrativa.
