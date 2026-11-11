@@ -42,3 +42,27 @@ flowchart TD
     E --> J[Gestor de Temas themes.css]
     J --> K[(LocalStorage API Persistencia)]
 ```
+
+### Estructura de Directorios
+
+```text
+Portfolio/
+├── index.html           # Documento principal y esqueleto de la ventana de terminal
+├── README.md            # Documentacion tecnica del proyecto
+├── css/                 # Hojas de estilo modulares
+│   ├── dashboard.css    # Diseno de metricas y widgets de resumen
+│   ├── style.css        # Reset, fuentes y distribucion global
+│   ├── terminal.css     # Estilos de la consola, cursor parpadeante y prompts
+│   ├── themes.css       # Definicion de variables y temas de color
+│   └── window.css       # Controles de ventana (cerrar, minimizar, maximizar)
+├── js/                  # Modulos JavaScript puros
+│   ├── app.js           # Orquestador del ciclo de vida y arranque de la aplicacion
+│   ├── autotyper.js     # Efecto mecanografico para texto inicial y bienvenida
+│   ├── cli.js           # Parser de comandos de terminal e historial
+│   ├── data.js          # Informacion estatica de proyectos, perfil y certificaciones
+│   ├── effects.js       # Efectos de audio sintetizado, blur y transiciones
+│   └── gui.js           # Manejo de botones, modal de ayuda e interactividad visual
+└── img/                 # Recursos graficos, fotografias y diplomas
+    ├── diploma.jpg      # Evidencias academicas verificables
+    └── profile.png      # Avatar e imagen de presentacion del autor
+```
