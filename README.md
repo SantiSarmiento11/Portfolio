@@ -66,3 +66,7 @@ Portfolio/
     ├── diploma.jpg      # Evidencias academicas verificables
     └── profile.png      # Avatar e imagen de presentacion del autor
 ```
+
+## Stack Tecnologico
+
+Desarrollado bajo una arquitectura ligera orientada a estandares web modernos, optimizando rendimiento y eliminando dependencias externas innecesarias.
