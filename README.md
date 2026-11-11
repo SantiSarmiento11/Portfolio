@@ -193,3 +193,9 @@ Cuando se ingresa un comando no reconocido:
 - La consola emite un mensaje formateado: `Comando no reconocido: '<input>'. Escriba 'help' para ver los comandos disponibles.`
 - El cursor de texto se limpia y vuelve a colocarse al inicio del nuevo prompt.
 - No se interrumpe la ejecucion ni se bloquea el hilo principal de JavaScript.
+
+## Estrategia de Pruebas y Aseguramiento de Calidad
+
+- Validacion sintactica de codigo JavaScript utilizando ESLint.
+- Verificacion de contraste y accesibilidad cromatica segun guias WCAG 2.1 AA en todos los temas.
+- Comprobacion de adaptabilidad en dispositivos moviles, tabletas y monitores ultrapanoramicos.
