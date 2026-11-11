@@ -209,3 +209,7 @@ npx eslint js/**/*.js
 # Validar accesibilidad y mejores practicas con Lighthouse CLI
 npx lighthouse-ci collect --url=http://localhost:3000
 ```
+
+## Registro de Eventos y Metricas de Uso
+
+La aplicacion mantiene un registro de eventos en la consola del navegador (`console.debug`) con fines de depuracion, rastreando comandos ingresados y cambios de estado de temas, sin recopilar datos personales sensibles del visitante.
