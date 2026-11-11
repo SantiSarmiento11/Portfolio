@@ -26,3 +26,19 @@ La aplicacion se estructura como una aplicacion web de una sola pagina (SPA) com
 2. Capa de Logica de Terminal y Parser de Comandos (`cli.js`, `autotyper.js`).
 3. Capa de Gestion de Interfaz y Ventanas (`gui.js`, `effects.js`).
 4. Capa de Datos Estructurados (`data.js`) y Controlador Principal (`app.js`).
+
+### Diagrama de Flujo Arquitectonico
+
+```mermaid
+flowchart TD
+    A[Usuario / Navegador] -->|Entrada de Teclado / Clics| B[Event Listener Controller]
+    B --> C{Tipo de Entrada}
+    C -->|Comando de Texto| D[CLI Command Parser cli.js]
+    C -->|Control de Ventana / Boton| E[GUI Window Manager gui.js]
+    D --> F[Validador de Sintaxis y Comandos]
+    F --> G[Data Store data.js]
+    G --> H[Modulo de Renderizado Terminal output]
+    E --> I[Efectos Visuales effects.js]
+    E --> J[Gestor de Temas themes.css]
+    J --> K[(LocalStorage API Persistencia)]
+```
