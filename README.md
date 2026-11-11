@@ -154,3 +154,10 @@ El ciclo de vida del portafolio se divide en las siguientes etapas:
 2. Inicializacion del autotyper con impresion secuencial de bienvenida y banner ASCII.
 3. Activacion del cursor interactivo y preparacion del prompt de comandos `sarmiento@fullstack:~$`.
 4. Escucha de teclado, gestion de buffers de texto y ejecucion de comandos parsedos.
+
+### Flujo de Interaccion de Usuario
+
+- **Modo Consola (CLI)**: El usuario escribe comandos directamente en el prompt y presiona `Enter` para recibir salidas formateadas.
+- **Autocompletado con Tab**: Al presionar `Tab`, el sistema completa comandos conocidos o sugiere alternativas validas.
+- **Historial con Flechas**: Presionar flecha `Arriba` o `Abajo` recupera comandos anteriores ejecutados en la sesion.
+- **Modo Ventana (GUI)**: Clics en los botones superiores de la ventana permiten minimizar, maximizar o cambiar temas graficamente.
