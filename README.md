@@ -218,3 +218,9 @@ La aplicacion mantiene un registro de eventos en la consola del navegador (`cons
 
 - Sanitizacion de texto antes de la insercion en el DOM utilizando `textContent` en lugar de `innerHTML` no validado, mitigando riesgos de inyeccion de scripts entre sitios (XSS).
 - Politica de Content Security Policy (CSP) compatible con recursos externos restringidos exclusivamente a Google Fonts.
+
+## Despliegue y Puesta en Produccion
+
+El portafolio esta optimizado para ser alojado en plataformas estaticas de borde (Edge Hosting) de alta velocidad:
+- **GitHub Pages**: Despliegue continuo automatico desde la rama `main`.
+- **Vercel** o **Netlify**: Alojamiento global con certificados SSL/TLS gratuitos y compresion Brotli automatica.
