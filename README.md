@@ -173,3 +173,16 @@ El ciclo de vida del portafolio se divide en las siguientes etapas:
 | `contact` | Ninguno | Proporciona enlaces a perfiles sociales, correo y redes |
 | `theme` | `[nombre]` | Cambia el esquema de colores (`dracula`, `nord`, `matrix`, `monokai`) |
 | `clear` | Ninguno | Limpia el historial de pantalla de la terminal |
+
+### Especificacion de la Estructura de Datos (data.js)
+
+Cada proyecto esta formalmente tipado en la coleccion de datos:
+```json
+{
+  "id": "tech-nova",
+  "title": "TechNova HelpDesk Platform",
+  "description": "Sistema empresarial de gestion de tickets con Spring Boot y JPA",
+  "technologies": ["Java", "Spring Boot", "MySQL", "JWT"],
+  "link": "https://github.com/SantiSarmiento11/TechNova"
+}
+```
