@@ -161,3 +161,15 @@ El ciclo de vida del portafolio se divide en las siguientes etapas:
 - **Autocompletado con Tab**: Al presionar `Tab`, el sistema completa comandos conocidos o sugiere alternativas validas.
 - **Historial con Flechas**: Presionar flecha `Arriba` o `Abajo` recupera comandos anteriores ejecutados en la sesion.
 - **Modo Ventana (GUI)**: Clics en los botones superiores de la ventana permiten minimizar, maximizar o cambiar temas graficamente.
+
+### Catalogo de Comandos Disponibles
+
+| Comando | Parametros | Descripcion de la Accion |
+| :--- | :--- | :--- |
+| `help` | Ninguno | Muestra la lista completa de comandos reconocidos |
+| `about` | Ninguno | Despliega biografia, formacion academica y enfoque tecnico |
+| `projects` | `[id]` opcional | Lista todos los proyectos o profundiza en uno especifico |
+| `skills` | `[categoria]` | Lista habilidades tecnicas divididas por backend, frontend y herramientas |
+| `contact` | Ninguno | Proporciona enlaces a perfiles sociales, correo y redes |
+| `theme` | `[nombre]` | Cambia el esquema de colores (`dracula`, `nord`, `matrix`, `monokai`) |
+| `clear` | Ninguno | Limpia el historial de pantalla de la terminal |
