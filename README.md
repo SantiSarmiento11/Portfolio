@@ -230,3 +230,11 @@ El portafolio esta optimizado para ser alojado en plataformas estaticas de borde
 - Cero frameworks pesados: Tamano total del bundle HTML/CSS/JS inferior a 80 KB comprimido.
 - Fuentes web cargadas de forma asincrona mediante directivas `preconnect` y `swap`.
 - Carga perezosa (lazy loading) en recursos multimedia e imagenes de diplomas.
+
+## Matriz de Resolucion de Incidencias
+
+| Problema Detectado | Causa Probable | Accion Correctiva |
+| :--- | :--- | :--- |
+| El tema seleccionado no se guarda al recargar | LocalStorage deshabilitado o bloqueado por politicas del navegador | Verificar que el navegador no este en modo incognito estricto con bloqueo de almacenamiento local. |
+| Sonidos de tipeo no se escuchan | Politica de reproduccion de audio bloqueada | El usuario debe interactuar con el documento (hacer clic) antes de que el AudioContext pueda activarse. |
+| Fuentes monoespaciadas no cargan | Restriccion de red hacia Google Fonts | Las reglas CSS cuentan con fallback a fuentes locales del sistema: `Consolas, Menlo, Monaco, monospace`. |
