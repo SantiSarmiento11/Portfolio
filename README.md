@@ -186,3 +186,10 @@ Cada proyecto esta formalmente tipado en la coleccion de datos:
   "link": "https://github.com/SantiSarmiento11/TechNova"
 }
 ```
+
+### Gestion de Errores y Comandos Invalidos
+
+Cuando se ingresa un comando no reconocido:
+- La consola emite un mensaje formateado: `Comando no reconocido: '<input>'. Escriba 'help' para ver los comandos disponibles.`
+- El cursor de texto se limpia y vuelve a colocarse al inicio del nuevo prompt.
+- No se interrumpe la ejecucion ni se bloquea el hilo principal de JavaScript.
