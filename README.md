@@ -122,3 +122,13 @@ cd Portfolio
 ```
 
 2. No se requieren pasos de compilacion o transpilacion externa gracias a la arquitectura nativa en JavaScript.
+
+### Verificacion de Integridad de Archivos
+
+Comprobar la presencia de la estructura de archivos principales mediante comando de terminal:
+```bash
+# En Linux / macOS:
+ls -la js/ css/
+# En Windows (PowerShell):
+Get-ChildItem -Recurse -File
+```
