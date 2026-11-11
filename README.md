@@ -82,3 +82,9 @@ Desarrollado bajo una arquitectura ligera orientada a estandares web modernos, o
 - ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) Semantica estructural garantizando accesibilidad y compatibilidad con lectores de pantalla.
 - ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) Variables nativas CSS (Custom Properties), efectos de desenfoque y diseno responsivo.
 - ![Google Fonts](https://img.shields.io/badge/Google_Fonts-4285F4?style=for-the-badge&logo=googlefonts&logoColor=white) Tipografias monoespaciadas para desarrolladores: Fira Code y JetBrains Mono.
+
+### Integraciones y APIs del Navegador
+
+- **Web Audio API**: Generacion de micro-sonidos sinteticos para simular el tipeo mecanico de teclado sin archivos de audio externos.
+- **Clipboard API**: Capacidad de copiar comandos, correos electronicos y fragmentos de contacto con un solo clic.
+- **Full-Screen API**: Soporte nativo para modo pantalla completa emulando una terminal de escritorio real.
