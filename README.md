@@ -88,3 +88,12 @@ Desarrollado bajo una arquitectura ligera orientada a estandares web modernos, o
 - **Web Audio API**: Generacion de micro-sonidos sinteticos para simular el tipeo mecanico de teclado sin archivos de audio externos.
 - **Clipboard API**: Capacidad de copiar comandos, correos electronicos y fragmentos de contacto con un solo clic.
 - **Full-Screen API**: Soporte nativo para modo pantalla completa emulando una terminal de escritorio real.
+
+## Requisitos Previos del Sistema
+
+- Navegador web moderno con soporte de ES6 Modules y CSS Grid/Flexbox:
+  - Google Chrome 90+
+  - Mozilla Firefox 88+
+  - Safari 14+
+  - Microsoft Edge 90+
+- Servidor web estatico local (Live Server, Python HTTP Server o Node.js `serve`).
