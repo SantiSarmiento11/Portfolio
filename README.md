@@ -132,3 +132,17 @@ ls -la js/ css/
 # En Windows (PowerShell):
 Get-ChildItem -Recurse -File
 ```
+
+### Ejecucion en Servidor de Desarrollo Local
+
+Opcion A: Utilizando el servidor integrado de Python 3:
+```bash
+python -m http.server 3000
+```
+
+Opcion B: Utilizando Node.js `npx serve`:
+```bash
+npx serve . -p 3000
+```
+
+Abra su navegador favorito en la URL: `http://localhost:3000`
