@@ -1,91 +1,112 @@
 /* ----------------------------------------------------
-   SarmientoOS Modern Developer Terminal - Theme Configurations
+   SarmientoOS & Developer Portfolio - Theme System
+   Paleta Cyber Neon Oficial (60-30-10):
+   - 60% Negro Espacial: #080B12
+   - 30% Cyan Eléctrico: #38E8FF
+   - 10% Verde Neón:     #B6FF00
    ---------------------------------------------------- */
 
 :root {
-    /* TEMA DRACULA (Por Defecto) */
-    --window-bg: rgba(30, 31, 41, 0.85);
-    --body-bg: #1e1f29;
-    --text-main: #f8f8f2;
-    --text-dim: #6272a4;
-    --border-color: rgba(189, 147, 249, 0.4);
-    --border-hover: rgba(189, 147, 249, 0.8);
-    --accent-color: #bd93f9; /* Purple */
-    --success-color: #50fa7b; /* Green */
-    --warn-color: #ffb86c; /* Orange */
-    --link-color: #ff79c6; /* Pink */
-    
-    --header-bg: #282a36;
-    --statusbar-bg: #191a21;
-    --tab-active-bg: #282a36;
-    --tab-inactive-bg: #1e1f29;
-    --box-bg: rgba(40, 42, 54, 0.5);
-    --font-family: 'JetBrains Mono', 'Fira Code', monospace;
-    --shadow-color: rgba(0, 0, 0, 0.5);
-    --glow-effect: 0 0 12px rgba(189, 147, 249, 0.3);
+    /* 60% Dominante - Negro Espacial y Superficies */
+    --bg-space: #080B12;
+    --bg-surface: #0e1320;
+    --bg-surface-elevated: #141c2f;
+    --bg-surface-glass: rgba(14, 19, 32, 0.82);
+    --bg-card: rgba(14, 19, 32, 0.7);
+    --bg-card-hover: rgba(20, 28, 47, 0.85);
+
+    /* 30% Cyan Eléctrico - Interactivo, Marca y Bordes */
+    --cyan-primary: #38E8FF;
+    --cyan-dim: rgba(56, 232, 255, 0.7);
+    --cyan-soft: rgba(56, 232, 255, 0.1);
+    --cyan-border: rgba(56, 232, 255, 0.22);
+    --cyan-border-hover: rgba(56, 232, 255, 0.6);
+    --cyan-glow: 0 0 15px rgba(56, 232, 255, 0.35);
+    --cyan-glow-lg: 0 0 30px rgba(56, 232, 255, 0.45);
+
+    /* 10% Verde Neón - Acentos, Badges y Estados */
+    --neon-green: #B6FF00;
+    --neon-green-glow: 0 0 14px rgba(182, 255, 0, 0.45);
+    --neon-green-soft: rgba(182, 255, 0, 0.12);
+    --neon-green-border: rgba(182, 255, 0, 0.35);
+
+    /* Tipografía y Legibilidad */
+    --text-primary: #F0F6FC;
+    --text-secondary: #9aa5b8;
+    --text-muted: #5e697e;
+
+    /* Tokens para Terminal y Componentes Existentes */
+    --body-bg: var(--bg-space);
+    --window-bg: var(--bg-surface-glass);
+    --text-main: var(--text-primary);
+    --text-dim: var(--text-secondary);
+    --border-color: var(--cyan-border);
+    --border-hover: var(--cyan-border-hover);
+    --accent-color: var(--cyan-primary);
+    --success-color: var(--neon-green);
+    --warn-color: #FFB800;
+    --link-color: var(--cyan-primary);
+    --header-bg: #0b0f1a;
+    --statusbar-bg: #06090e;
+    --box-bg: rgba(14, 19, 32, 0.7);
+    --shadow-color: rgba(0, 0, 0, 0.7);
+    --glow-effect: var(--cyan-glow);
+
+    /* Fuentes */
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
 }
 
-/* TEMA ONE DARK PRO */
-body.theme-onedark {
-    --window-bg: rgba(33, 37, 43, 0.85);
-    --body-bg: #1e2227;
-    --text-main: #abb2bf;
-    --text-dim: #5c6370;
-    --border-color: rgba(97, 175, 239, 0.4);
-    --border-hover: rgba(97, 175, 239, 0.8);
-    --accent-color: #61afef; /* Blue */
-    --success-color: #98c379; /* Green */
-    --warn-color: #e5c07b; /* Yellow */
-    --link-color: #c678dd; /* Purple */
-    
-    --header-bg: #282c34;
-    --statusbar-bg: #1e222a;
-    --tab-active-bg: #282c34;
-    --tab-inactive-bg: #21252b;
-    --box-bg: rgba(40, 44, 52, 0.5);
-    --shadow-color: rgba(0, 0, 0, 0.6);
-    --glow-effect: 0 0 12px rgba(97, 175, 239, 0.25);
+/* TEMA DRACULA ALTERNATIVO */
+body.theme-dracula {
+    --bg-space: #1e1f29;
+    --bg-surface: #282a36;
+    --bg-surface-elevated: #343746;
+    --bg-surface-glass: rgba(40, 42, 54, 0.85);
+    --cyan-primary: #bd93f9;
+    --cyan-dim: rgba(189, 147, 249, 0.7);
+    --cyan-soft: rgba(189, 147, 249, 0.12);
+    --cyan-border: rgba(189, 147, 249, 0.3);
+    --cyan-border-hover: rgba(189, 147, 249, 0.7);
+    --cyan-glow: 0 0 15px rgba(189, 147, 249, 0.35);
+    --neon-green: #50fa7b;
+    --neon-green-glow: 0 0 14px rgba(80, 250, 123, 0.45);
+    --neon-green-soft: rgba(80, 250, 123, 0.12);
+    --accent-color: #bd93f9;
+    --success-color: #50fa7b;
 }
 
-/* TEMA NORD */
+/* TEMA NORD ALTERNATIVO */
 body.theme-nord {
-    --window-bg: rgba(46, 52, 64, 0.85);
-    --body-bg: #2e3440;
-    --text-main: #d8dee9;
-    --text-dim: #4c566a;
-    --border-color: rgba(136, 192, 208, 0.4);
-    --border-hover: rgba(136, 192, 208, 0.8);
-    --accent-color: #88c0d0; /* Frost Cyan */
-    --success-color: #a3be8c; /* Green */
-    --warn-color: #ebcb8b; /* Yellow */
-    --link-color: #81a1c1; /* Frost Blue */
-    
-    --header-bg: #3b4252;
-    --statusbar-bg: #242933;
-    --tab-active-bg: #3b4252;
-    --tab-inactive-bg: #2e3440;
-    --box-bg: rgba(46, 52, 64, 0.6);
-    --shadow-color: rgba(0, 0, 0, 0.55);
-    --glow-effect: 0 0 12px rgba(136, 192, 208, 0.25);
+    --bg-space: #242933;
+    --bg-surface: #2e3440;
+    --bg-surface-elevated: #3b4252;
+    --bg-surface-glass: rgba(46, 52, 64, 0.85);
+    --cyan-primary: #88c0d0;
+    --cyan-dim: rgba(136, 192, 208, 0.7);
+    --cyan-soft: rgba(136, 192, 208, 0.12);
+    --cyan-border: rgba(136, 192, 208, 0.3);
+    --cyan-border-hover: rgba(136, 192, 208, 0.7);
+    --cyan-glow: 0 0 15px rgba(136, 192, 208, 0.35);
+    --neon-green: #a3be8c;
+    --neon-green-glow: 0 0 14px rgba(163, 190, 140, 0.45);
+    --neon-green-soft: rgba(163, 190, 140, 0.12);
+    --accent-color: #88c0d0;
+    --success-color: #a3be8c;
 }
 
-/* Fondo decorativo sutil */
+/* Fondo Glow Neón Sutil */
 .bg-gradient-glow {
-    position: absolute;
-    top: -10%;
-    left: -10%;
-    width: 120%;
-    height: 120%;
-    background: radial-gradient(circle at 50% 30%, rgba(189, 147, 249, 0.08) 0%, rgba(0,0,0,0) 60%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: 
+        radial-gradient(circle at 15% 15%, rgba(56, 232, 255, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 85% 65%, rgba(182, 255, 0, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(56, 232, 255, 0.04) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
-    transition: background 0.5s ease;
-}
-
-body.theme-onedark .bg-gradient-glow {
-    background: radial-gradient(circle at 50% 30%, rgba(97, 175, 239, 0.08) 0%, rgba(0,0,0,0) 60%);
-}
-
-body.theme-nord .bg-gradient-glow {
-    background: radial-gradient(circle at 50% 30%, rgba(136, 192, 208, 0.08) 0%, rgba(0,0,0,0) 60%);
+    transition: background 0.6s ease;
 }

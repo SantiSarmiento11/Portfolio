@@ -1,128 +1,108 @@
 /**
- * SarmientoOS - GUI/TUI tab navigation and CPU metrics fluctuation updates
+ * SarmientoOS - GUI Interactions, Modal Lightbox, and Mobile Navigation
  */
 
-const tuiTabs = document.querySelectorAll(".tui-tab");
-const tuiPanels = document.querySelectorAll(".tui-panel");
-const cliMode = document.getElementById("cli-mode");
-const guiMode = document.getElementById("gui-mode");
-const currentModeLbl = document.getElementById("current-mode-lbl");
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Mobile Menu Toggle
+    const mobileToggle = document.getElementById("mobile-nav-toggle");
+    const navMenu = document.getElementById("nav-menu");
 
-// Tabs selection handler
-tuiTabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-        const targetPanelId = tab.getAttribute("aria-controls");
-        
-        tuiTabs.forEach(t => {
-            t.classList.remove("active");
-            t.setAttribute("aria-selected", "false");
-        });
-        tuiPanels.forEach(p => {
-            p.classList.remove("active");
-            p.style.display = "none";
-        });
-        
-        tab.classList.add("active");
-        tab.setAttribute("aria-selected", "true");
-        const activePanel = document.getElementById(targetPanelId);
-        if (activePanel) {
-            activePanel.classList.add("active");
-            activePanel.style.display = "block";
-        }
-    });
-});
-
-// Switch layouts (Terminal CLI vs Visual TUI)
-function toggleMode() {
-    if (!isSessionActive) return; // Declared globally in effects.js
-    
-    if (currentMode === "CLI") {
-        cliMode.style.display = "none";
-        guiMode.style.display = "flex";
-        currentMode = "GUI";
-        currentModeLbl.textContent = "VISUAL";
-        
-        fluctuateCpuStats();
-    } else if (currentMode === "GUI") {
-        guiMode.style.display = "none";
-        cliMode.style.display = "flex";
-        currentMode = "CLI";
-        currentModeLbl.textContent = "CLI";
-        
-        const terminalInput = document.getElementById("terminal-input");
-        if (terminalInput) {
-            setTimeout(() => {
-                terminalInput.focus();
-                updateCursorPosition();
-            }, 50);
-        }
-    }
-}
-
-// Fluctuar el gráfico de CPU de la GUI para darle dinamismo
-function fluctuateCpuStats() {
-    if (currentMode !== "GUI") return;
-    const cpu0Fill = document.querySelector("#panel-sys .sys-bar:nth-child(1) .bar-fill");
-    const cpu0Lbl = document.querySelector("#panel-sys .sys-bar:nth-child(1) .bar-lbl");
-    const cpu1Fill = document.querySelector("#panel-sys .sys-bar:nth-child(2) .bar-fill");
-    const cpu1Lbl = document.querySelector("#panel-sys .sys-bar:nth-child(2) .bar-lbl");
-    
-    if (cpu0Fill && cpu1Fill) {
-        const val0 = Math.floor(Math.random() * 40) + 15; // 15% - 55%
-        const val1 = Math.floor(Math.random() * 50) + 10; // 10% - 60%
-        
-        cpu0Fill.style.width = val0 + "%";
-        cpu1Fill.style.width = val1 + "%";
-        
-        cpu0Lbl.textContent = `CPU 0: ${val0}%`;
-        cpu1Lbl.textContent = `CPU 1: ${val1}%`;
-    }
-}
-setInterval(fluctuateCpuStats, 2000);
-
-// Enlazar eventos de la pestaña Inicio (Lanzador de terminal y Lightbox de Diploma)
-window.addEventListener("load", () => {
-    // Botón Lanzador de Terminal desde el panel Inicio
-    const launchTerminalBtn = document.getElementById("launch-terminal-btn");
-    if (launchTerminalBtn) {
-        launchTerminalBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            toggleMode();
-        });
-    }
-
-    // Modal Lightbox para zoom del Diploma de Hackaton
-    const diplomaContainer = document.querySelector(".diploma-container");
-    const diplomaLightbox = document.getElementById("diploma-lightbox");
-    const lightboxCloseBtn = document.getElementById("lightbox-close-btn");
-
-    if (diplomaContainer && diplomaLightbox) {
-        diplomaContainer.addEventListener("click", () => {
-            diplomaLightbox.classList.add("active");
-            diplomaLightbox.setAttribute("aria-hidden", "false");
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener("click", () => {
+            const isFlex = navMenu.style.display === "flex";
+            navMenu.style.display = isFlex ? "none" : "flex";
+            if (!isFlex) {
+                navMenu.style.flexDirection = "column";
+                navMenu.style.position = "absolute";
+                navMenu.style.top = "70px";
+                navMenu.style.left = "0";
+                navMenu.style.right = "0";
+                navMenu.style.background = "var(--bg-surface-glass)";
+                navMenu.style.padding = "20px";
+                navMenu.style.borderBottom = "1px solid var(--cyan-border)";
+            }
         });
 
-        if (lightboxCloseBtn) {
-            lightboxCloseBtn.addEventListener("click", (e) => {
-                e.stopPropagation();
-                diplomaLightbox.classList.remove("active");
-                diplomaLightbox.setAttribute("aria-hidden", "true");
+        // Close mobile nav when clicking a link
+        const navLinks = navMenu.querySelectorAll(".nav-link");
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                if (window.innerWidth <= 768) {
+                    navMenu.style.display = "none";
+                }
             });
-        }
+        });
+    }
 
-        diplomaLightbox.addEventListener("click", (e) => {
-            if (e.target === diplomaLightbox) {
-                diplomaLightbox.classList.remove("active");
-                diplomaLightbox.setAttribute("aria-hidden", "true");
+    // 2. Terminal Trigger Buttons
+    const terminalTriggers = document.querySelectorAll(".js-trigger-terminal");
+    terminalTriggers.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            toggleTerminalDrawer(true);
+        });
+    });
+
+    const terminalDrawerClose = document.getElementById("drawer-close-btn");
+    const terminalDotClose = document.getElementById("terminal-dot-close");
+    if (terminalDrawerClose) {
+        terminalDrawerClose.addEventListener("click", () => toggleTerminalDrawer(false));
+    }
+    if (terminalDotClose) {
+        terminalDotClose.addEventListener("click", () => toggleTerminalDrawer(false));
+    }
+
+    // 3. Meta AI Hackathon Story Flow - Lightbox Hooks
+    const flowCards = document.querySelectorAll(".js-flow-step");
+    flowCards.forEach(card => {
+        card.addEventListener("click", () => {
+            const imgSrc = card.getAttribute("data-img");
+            const title = card.getAttribute("data-title");
+            const desc = card.getAttribute("data-desc");
+            if (imgSrc) {
+                openLightbox(imgSrc, title, desc);
             }
         });
+    });
 
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape" && diplomaLightbox.classList.contains("active")) {
-                diplomaLightbox.classList.remove("active");
-                diplomaLightbox.setAttribute("aria-hidden", "true");
-            }
+    // 4. Diploma Lightbox Trigger (Voxel 51 Hackathon)
+    const diplomaTriggers = document.querySelectorAll(".js-view-diploma");
+    diplomaTriggers.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const imgSrc = btn.getAttribute("data-diploma") || "img/Hackaton Voxel 51 (Visual Agents)/diploma.jpg";
+            openLightbox(
+                imgSrc,
+                "Certificado de Hackaton — Visual Agents (Voxel 51)",
+                "Evidencia verificable de participación y liderazgo en desarrollo de software de monitoreo y prevención vial con IA."
+            );
+        });
+    });
+
+    // 5. Contact Form Simulation
+    const contactForm = document.getElementById("contact-form");
+    if (contactForm) {
+        contactForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const submitBtn = contactForm.querySelector("button[type='submit']");
+            const originalText = submitBtn.innerHTML;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<svg class="icon-svg size-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg> Enviando...`;
+
+            setTimeout(() => {
+                submitBtn.innerHTML = `<svg class="icon-svg size-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> ¡Mensaje Enviado con Éxito!`;
+                submitBtn.style.background = "var(--neon-green)";
+                submitBtn.style.color = "var(--bg-space)";
+                contactForm.reset();
+
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.style.background = "";
+                    submitBtn.style.color = "";
+                }, 4000);
+            }, 900);
         });
     }
 });
-

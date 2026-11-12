@@ -1,5 +1,7 @@
 /**
  * SarmientoOS - CLI Command Parser, History, and Autocompletions
+ * Totalmente sincronizado con el CV, repositorios de GitHub (SantiSarmiento11)
+ * y la experiencia de la Meta AI Hackathon 2026.
  */
 
 let commandHistory = [];
@@ -14,44 +16,38 @@ const customCursor = document.getElementById("custom-cursor");
 function updateCursorPosition() {
     if (!terminalInput || !customCursor) return;
     const length = terminalInput.value.length;
-    const charWidth = 9.0; // JetBrains mono character width adjustment
+    const charWidth = 8.2; // Monospace character width adjustment
     customCursor.style.left = (length * charWidth) + "px";
 }
 
 // Commands list dictionary
 const commands = {
     help: {
-        desc: "Muestra los comandos disponibles.",
+        desc: "Muestra la lista de comandos disponibles.",
         action: () => {
             return [
-                "SarmientoOS developer-terminal v5.1-BASH",
-                "========================================",
-                "Escribe cualquiera de los siguientes comandos en la terminal:",
+                "<span class='highlight'>SarmientoOS developer-terminal v6.0-BASH</span>",
+                "========================================================",
+                "Escribe cualquiera de los siguientes comandos en la consola:",
                 "",
-                "  <span class='highlight'>help</span>         - Ver este manual de ayuda.",
-                "  <span class='highlight'>neofetch</span>     - Muestra el resumen del sistema y del desarrollador.",
-                "  <span class='highlight'>about</span>        - Resumen profesional del desarrollador.",
-                "  <span class='highlight'>skills</span>       - Lista de tecnologías y habilidades ordenadas.",
-                "  <span class='highlight'>education</span>    - Muestra la formación académica.",
-                "  <span class='highlight'>languages</span>    - Muestra los idiomas dominados.",
-                "  <span class='highlight'>competencies</span> - Muestra competencias profesionales.",
-                "  <span class='highlight'>projects</span>     - Lista los proyectos destacados con sus detalles.",
-                "  <span class='highlight'>contact</span>      - Canales de contacto y enlaces de interés.",
-                "  <span class='highlight'>theme</span>        - Alterna temas: <span class='highlight'>theme dracula</span>, <span class='highlight'>theme onedark</span>, <span class='highlight'>theme nord</span>.",
-                "  <span class='highlight'>gui</span>          - Cambia a la interfaz visual de pestañas.",
+                "  <span class='highlight'>about</span>        - Perfil profesional y resumen técnico.",
+                "  <span class='highlight'>hackathon</span>    - Detalles y flujo de la Meta AI Hackathon 2026 (Sleeply).",
+                "  <span class='highlight'>projects</span>     - Proyectos destacados con enlaces directos a GitHub.",
+                "  <span class='highlight'>skills</span>       - Árbol de habilidades técnicas dominadas.",
+                "  <span class='highlight'>roadmap</span>      - Tecnologías en aprendizaje activo (SantiSarmiento11).",
+                "  <span class='highlight'>timeline</span>     - Línea de tiempo de trayectoria y formación.",
+                "  <span class='highlight'>neofetch</span>     - Información del sistema y entorno de desarrollo.",
+                "  <span class='highlight'>contact</span>      - Medios de contacto directo (GitHub, LinkedIn, Email).",
                 "  <span class='highlight'>clear</span>        - Limpia la pantalla de la terminal.",
+                "  <span class='highlight'>exit</span>         - Cierra la consola interactiva CLI.",
                 "",
-                "Tip: Puedes hacer clic en 'Acciones' arriba para auto-escribir y ejecutar."
+                "Tip: Usa la tecla [TAB] para autocompletar comandos y las flechas [↑/↓] para navegar el historial."
             ].join("<br>");
         }
     },
     neofetch: {
-        desc: "Información de sistema en formato visual.",
+        desc: "Información de sistema en formato visual neofetch.",
         action: () => {
-            const sysUptimeDom = document.getElementById("sys-uptime");
-            const sysUptime = sysUptimeDom ? sysUptimeDom.textContent : "0h 0m 0s";
-            const currentThemeName = currentTheme.toUpperCase();
-            
             const asciiLogo = [
                 "    ______   ",
                 "   / ____/   ",
@@ -62,16 +58,15 @@ const commands = {
             ];
             
             const info = [
-                `<span class="highlight">sarmiento@fullstack</span>`,
-                `-------------------`,
+                `<span class="highlight">sarmiento@fullstack-ai</span>`,
+                `-----------------------------------`,
                 `OS: SarmientoOS GNU/Linux x86_64`,
-                `Host: local-runtime-env:latest`,
-                `Uptime: ${sysUptime}`,
-                `Shell: bash v5.1-compat`,
-                `Theme: ${currentThemeName}`,
-                `Terminal: xterm-256color`,
-                `Container: Docker Engine 24.0.2`,
-                `Memory: 6.5MB / 16.0MB`
+                `Host: Campuslands Floridablanca / Meta AI Lab`,
+                `Stack: Java, Spring Boot, Python, PostgreSQL, n8n`,
+                `Roadmap: Kubernetes, AWS, Go, React, TypeScript`,
+                `Cert: Meta AI Hackathon (Approved), Visual Agents ML`,
+                `Shell: bash v5.2-interactive`,
+                `Theme: Cyber Neon (60% Black, 30% Cyan, 10% Green)`
             ];
             
             let out = '<div class="neofetch-layout"><pre class="neofetch-ascii">';
@@ -87,150 +82,152 @@ const commands = {
         }
     },
     about: {
-        desc: "Perfil profesional y resumen sobre el desarrollador.",
+        desc: "Perfil profesional y resumen técnico.",
         action: () => {
             return [
-                "PERFIL PROFESIONAL",
-                "------------------",
-                `Nombre: ${developerData.bio.name}`,
-                `Título: ${developerData.bio.title}`,
+                "<span class='highlight'>PERFIL PROFESIONAL // SANTIAGO SARMIENTO</span>",
+                "--------------------------------------------------------",
+                `Rol: ${developerData.bio.role}`,
+                `Ubicación: ${developerData.bio.location}`,
+                `Estado: <span class='ansi-success'>${developerData.bio.status}</span>`,
                 "",
                 developerData.bio.description,
                 "",
                 `Cita: "${developerData.bio.quote}"`,
                 "",
-                "Escribe <span class='highlight'>skills</span> para ver las tecnologías, <span class='highlight'>education</span> para formación, o <span class='highlight'>projects</span> para portafolio."
+                `Idiomas: Español (${developerData.languages[0].level} - Nativo) | Inglés (${developerData.languages[1].level} - Intermedio B2)`
             ].join("<br>");
+        }
+    },
+    hackathon: {
+        desc: "Detalles y etapas de la Meta AI Hackathon 2026.",
+        action: () => {
+            const h = developerData.metaHackathon;
+            let out = [
+                `<span class='highlight'>${h.title.toUpperCase()}</span>`,
+                `Periodo: ${h.period} | Organización: ${h.organization}`,
+                `Proyecto: <span class='ansi-success'>${h.project}</span>`,
+                `Repositorio: <a href="${h.repo}" target="_blank" class="highlight">${h.repo}</a>`,
+                "",
+                h.summary,
+                "",
+                "Flujo cronológico del proceso:",
+                "------------------------------"
+            ];
+            h.steps.forEach(s => {
+                out.push(`  [Fase ${s.id}] <span class='highlight'>${s.date}</span> - ${s.title}`);
+                out.push(`          ${s.desc}`);
+            });
+            return out.join("<br>");
         }
     },
     skills: {
-        desc: "Listado estructurado de tecnologías y conocimientos.",
-        action: () => {
-            return [
-                "HABILIDADES TÉCNICAS",
-                "--------------------",
-                "",
-                "<svg class='icon-svg' viewBox='0 0 24 24'><rect x='2' y='3' width='20' height='14' rx='2' ry='2'></rect><line x1='8' y1='21' x2='16' y2='21'></line><line x1='12' y1='17' x2='12' y2='21'></line></svg> FRONTEND:",
-                developerData.skills.frontend.map(s => `  * ${s}`).join("<br>"),
-                "",
-                "<svg class='icon-svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='3'></circle><path d='M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z'></path></svg> BACKEND &amp; APIs:",
-                developerData.skills.backend.map(s => `  * ${s}`).join("<br>"),
-                "",
-                "<svg class='icon-svg' viewBox='0 0 24 24'><path d='M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z'></path><polyline points='17 21 17 13 7 13 7 21'></polyline><polyline points='7 3 7 8 15 8'></polyline></svg> DEVOPS &amp; TOOLS:",
-                developerData.skills.devopsDb.map(s => `  * ${s}`).join("<br>"),
-                ""
-            ].join("<br>");
-        }
-    },
-    education: {
-        desc: "Formación académica del desarrollador.",
+        desc: "Árbol de tecnologías y habilidades técnicas.",
         action: () => {
             let out = [
-                "FORMACIÓN ACADÉMICA",
-                "-------------------",
-                ""
+                "<span class='highlight'>ÁRBOL DE HABILIDADES TÉCNICAS</span>",
+                "----------------------------------------",
+                "",
+                "<span class='highlight'>[BACKEND & ARQUITECTURA (SOLID)]:</span>"
             ];
-            developerData.education.forEach(edu => {
-                out.push(`  * <span class='highlight'>${edu.title}</span>`);
-                out.push(`    Centro: ${edu.school}`);
-                out.push(`    Periodo: ${edu.period}`);
-                out.push("");
+            developerData.skillsTree.backend.skills.forEach(s => {
+                out.push(`  * <span class='highlight'>${s.name}</span> (${s.level}) - ${s.detail}`);
             });
+
+            out.push("");
+            out.push("<span class='highlight'>[FRONTEND & EXPERIENCIA WEB]:</span>");
+            developerData.skillsTree.frontend.skills.forEach(s => {
+                out.push(`  * <span class='highlight'>${s.name}</span> (${s.level}) - ${s.detail}`);
+            });
+
+            out.push("");
+            out.push("<span class='highlight'>[DEVOPS, AUTOMATIZACIÓN & IA]:</span>");
+            developerData.skillsTree.automationCloud.skills.forEach(s => {
+                out.push(`  * <span class='highlight'>${s.name}</span> (${s.level}) - ${s.detail}`);
+            });
+
+            out.push("");
+            out.push("Escribe <span class='highlight'>roadmap</span> para ver las tecnologías en aprendizaje activo.");
             return out.join("<br>");
         }
     },
-    languages: {
-        desc: "Idiomas dominados por el desarrollador.",
+    roadmap: {
+        desc: "Tecnologías en aprendizaje activo (Repositorio: SantiSarmiento11).",
         action: () => {
             let out = [
-                "IDIOMAS",
-                "-------",
+                "<span class='highlight'>ROADMAP // EN APRENDIZAJE ACTIVO (SantiSarmiento11)</span>",
+                "----------------------------------------------------------------",
+                developerData.skillsTree.learningRoadmap.desc,
                 ""
             ];
-            developerData.languages.forEach(lang => {
-                out.push(`  * <span class='highlight'>${lang.language}</span> - Nivel: ${lang.level}`);
-            });
-            return out.join("<br>");
-        }
-    },
-    competencies: {
-        desc: "Competencias profesionales del desarrollador.",
-        action: () => {
-            let out = [
-                "COMPETENCIAS",
-                "------------",
-                ""
-            ];
-            developerData.competencies.forEach(comp => {
-                out.push(`  * ${comp}`);
+            developerData.skillsTree.learningRoadmap.skills.forEach(s => {
+                out.push(`  * <span class='ansi-success'>${s.name}</span> &rarr; Área: ${s.category}`);
             });
             return out.join("<br>");
         }
     },
     projects: {
-        desc: "Proyectos de desarrollo full-stack.",
+        desc: "Proyectos y repositorios en GitHub.",
         action: () => {
             let out = [
-                "EXPERIENCIA Y PROYECTOS DESTACADOS",
-                "----------------------------------",
+                "<span class='highlight'>PROYECTOS DESTACADOS // GITHUB REPOSITORIES</span>",
+                "---------------------------------------------------------",
                 ""
             ];
-            
             developerData.projects.forEach((proj, idx) => {
-                out.push(`[${idx + 1}] ${proj.title}`);
+                out.push(`[${idx + 1}] <span class='highlight'>${proj.title}</span> [${proj.badge}]`);
                 out.push(`    Descripción: ${proj.desc}`);
-                out.push(`    Tecnologías: ${proj.stack}`);
-                out.push(`    Acceso:      <a href="${proj.demo}" class="retro-link-full"><svg class='icon-svg size-sm' viewBox='0 0 24 24'><path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'></path><polyline points='15 3 21 3 21 9'></polyline><line x1='10' y1='14' x2='21' y2='3'></line></svg> Demo</a> / <a href="${proj.code}" class="retro-link-full"><svg class='icon-svg size-sm' viewBox='0 0 24 24'><polyline points='16 18 22 12 16 6'></polyline><polyline points='8 6 2 12 8 18'></polyline></svg> Código</a>`);
+                out.push(`    Stack:       ${proj.stack.join(", ")}`);
+                out.push(`    GitHub:      <a href="${proj.repo}" target="_blank" class="highlight">${proj.repo}</a>`);
                 out.push("");
             });
-            
+            return out.join("<br>");
+        }
+    },
+    timeline: {
+        desc: "Línea de tiempo de trayectoria y formación.",
+        action: () => {
+            let out = [
+                "<span class='highlight'>LÍNEA DE TIEMPO & FORMACIÓN ACADÉMICA</span>",
+                "------------------------------------------------",
+                ""
+            ];
+            developerData.timeline.forEach(t => {
+                out.push(`  * <span class='highlight'>${t.period}</span> [${t.tag}]`);
+                out.push(`    ${t.title} - ${t.institution}`);
+                out.push(`    ${t.desc}`);
+                out.push("");
+            });
             return out.join("<br>");
         }
     },
     contact: {
-        desc: "Enlaces de contacto del desarrollador.",
+        desc: "Enlaces y medios de contacto profesional.",
         action: () => {
             return [
-                "INFORMACIÓN DE CONTACTO",
-                "-----------------------",
-                "Si deseas iniciar un proyecto o conversar sobre tecnología, utiliza los siguientes medios:",
-                "",
-                `<svg class='icon-svg' viewBox='0 0 24 24'><path d='M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z'></path><polyline points='22,6 12,13 2,6'></polyline></svg> Email:    <a href="mailto:${developerData.contact.email}" class="retro-link-full">${developerData.contact.email}</a>`,
-                `<svg class='icon-svg' viewBox='0 0 24 24'><path d='M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37(CI/CD)c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22'></path></svg> GitHub:   <a href="${developerData.contact.github}" target="_blank" class="retro-link-full">${developerData.contact.github}</a>`,
-                `<svg class='icon-svg' viewBox='0 0 24 24'><path d='M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z'></path><rect x='2' y='9' width='4' height='12'></rect><circle cx='4' cy='4' r='2'></circle></svg> LinkedIn: <a href="${developerData.contact.linkedin}" target="_blank" class="retro-link-full">${developerData.contact.linkedin}</a>`,
-                "",
-                "Puedes usar el formulario visual en el Modo GUI escribiendo <span class='highlight'>gui</span>."
+                "<span class='highlight'>CANALES DE CONTACTO PROFESIONAL</span>",
+                "-----------------------------------------",
+                `Email:    <a href="mailto:${developerData.contact.email}" class="highlight">${developerData.contact.email}</a>`,
+                `GitHub:   <a href="${developerData.contact.github}" target="_blank" class="highlight">${developerData.contact.github}</a>`,
+                `LinkedIn: <a href="${developerData.contact.linkedin}" target="_blank" class="highlight">${developerData.contact.linkedin}</a>`,
+                `Lugar:    ${developerData.contact.location}`
             ].join("<br>");
         }
     },
-    theme: {
-        desc: "Configura el tema: theme [dracula|onedark|nord].",
-        action: (arg) => {
-            if (!arg) {
-                return "Uso: <span class='highlight'>theme dracula</span> | <span class='highlight'>theme onedark</span> | <span class='highlight'>theme nord</span>";
-            }
-            const normArg = arg.toLowerCase().trim();
-            if (commands.theme.isValid(normArg)) {
-                setTheme(normArg); // Declared globally in effects.js
-                return `Tema cambiado a: ${normArg.toUpperCase()}`;
-            } else {
-                return `Tema desconocido: ${arg}. Opciones válidas: dracula, onedark, nord.`;
-            }
-        },
-        isValid: (t) => ["dracula", "onedark", "nord"].includes(t)
-    },
-    gui: {
-        desc: "Cambia a la interfaz visual de pestañas.",
-        action: () => {
-            toggleMode(); // Declared globally in gui.js or app.js
-            return "Cargando panel visual...";
-        }
-    },
     clear: {
-        desc: "Limpia la terminal.",
+        desc: "Limpia la pantalla de la terminal.",
         action: () => {
             if (terminalHistory) terminalHistory.innerHTML = "";
             return "";
+        }
+    },
+    exit: {
+        desc: "Cierra la ventana de la terminal interactiva.",
+        action: () => {
+            if (typeof toggleTerminalDrawer === "function") {
+                toggleTerminalDrawer(false);
+            }
+            return "Cerrando terminal...";
         }
     }
 };
@@ -250,80 +247,101 @@ function runCommand(commandString) {
         arg = trimmed.slice(spaceIdx + 1);
     }
     
-    commandHistory.push(trimmed);
-    historyIndex = -1;
+    const normCmd = cmd.toLowerCase();
     
+    // Create command line entry in history
     const cmdLine = document.createElement("div");
-    cmdLine.className = "terminal-command-echo";
-    cmdLine.innerHTML = `<span class="prompt-user">guest@sarmiento-os</span><span class="prompt-separator">:</span><span class="prompt-path">~/portfolio</span><span class="prompt-char">$</span> <span>${commandString}</span>`;
+    cmdLine.className = "terminal-cmd-entry";
+    cmdLine.innerHTML = `
+        <span class="prompt-user">guest@sarmiento</span><span class="prompt-separator">:</span><span class="prompt-path">~/portfolio</span><span class="prompt-char">$</span> <span class="cmd-run-text">${escapeHtml(trimmed)}</span>
+    `;
     terminalHistory.appendChild(cmdLine);
     
-    const pOutput = document.createElement("div");
-    pOutput.className = "terminal-output-block";
+    // Process response
+    const respLine = document.createElement("div");
+    respLine.className = "terminal-resp-entry";
     
-    const commandDef = commands[cmd.toLowerCase()];
-    if (commandDef) {
-        const result = commandDef.action(arg);
-        if (result !== "") {
-            pOutput.innerHTML = result;
-            terminalHistory.appendChild(pOutput);
+    if (commands[normCmd]) {
+        try {
+            const out = commands[normCmd].action(arg);
+            if (out !== "") {
+                respLine.innerHTML = out;
+                terminalHistory.appendChild(respLine);
+            }
+        } catch (e) {
+            respLine.innerHTML = `<span class="ansi-warn">Error ejecutando comando: ${e.message}</span>`;
+            terminalHistory.appendChild(respLine);
         }
     } else {
-        pOutput.innerHTML = `sarmiento-bash: ${cmd}: no se encontró el comando. Escribe <span class="highlight">help</span> para ayuda.`;
-        terminalHistory.appendChild(pOutput);
+        respLine.innerHTML = `Comando no reconocido: <span class="ansi-warn">${escapeHtml(cmd)}</span>. Escribe <span class="highlight">help</span> para ver los comandos válidos.`;
+        terminalHistory.appendChild(respLine);
     }
     
+    // Auto-scroll to bottom
     terminalHistory.scrollTop = terminalHistory.scrollHeight;
+    
+    // Save in session history
+    commandHistory.push(trimmed);
+    historyIndex = commandHistory.length;
 }
 
-// Attach input and keydown event listeners for terminal interaction
+// Escape HTML utility
+function escapeHtml(text) {
+    const div = document.createElement("div");
+    div.innerText = text;
+    return div.innerHTML;
+}
+
+// Event Listeners for Terminal Input
 if (terminalInput) {
     terminalInput.addEventListener("keydown", (e) => {
+        // Reproducir sonido sintético de teclado si está disponible
+        if (typeof playKeySound === "function") {
+            playKeySound();
+        }
+
         if (e.key === "Enter") {
-            const commandVal = terminalInput.value;
+            e.preventDefault();
+            const val = terminalInput.value;
             terminalInput.value = "";
             updateCursorPosition();
-            runCommand(commandVal);
+            runCommand(val);
         } else if (e.key === "ArrowUp") {
             e.preventDefault();
-            if (commandHistory.length > 0) {
-                if (historyIndex === -1) {
-                    historyIndex = commandHistory.length - 1;
-                } else if (historyIndex > 0) {
-                    historyIndex--;
-                }
+            if (commandHistory.length > 0 && historyIndex > 0) {
+                historyIndex--;
                 terminalInput.value = commandHistory[historyIndex];
                 updateCursorPosition();
             }
         } else if (e.key === "ArrowDown") {
             e.preventDefault();
-            if (historyIndex !== -1) {
-                if (historyIndex < commandHistory.length - 1) {
-                    historyIndex++;
-                    terminalInput.value = commandHistory[historyIndex];
-                } else {
-                    historyIndex = -1;
-                    terminalInput.value = "";
-                }
+            if (historyIndex < commandHistory.length - 1) {
+                historyIndex++;
+                terminalInput.value = commandHistory[historyIndex];
                 updateCursorPosition();
+            } else {
+                historyIndex = commandHistory.length;
+                terminalInput.value = "";
+                updateCursorPosition();
+            }
+        } else if (e.key === "Tab") {
+            e.preventDefault();
+            const currentVal = terminalInput.value.toLowerCase().trim();
+            if (currentVal) {
+                const keys = Object.keys(commands);
+                const matches = keys.filter(k => k.startsWith(currentVal));
+                if (matches.length === 1) {
+                    terminalInput.value = matches[0];
+                    updateCursorPosition();
+                } else if (matches.length > 1) {
+                    const matchLine = document.createElement("div");
+                    matchLine.innerHTML = `<span class="highlight">Coincidencias:</span> ${matches.join("  ")}`;
+                    terminalHistory.appendChild(matchLine);
+                    terminalHistory.scrollTop = terminalHistory.scrollHeight;
+                }
             }
         }
     });
 
     terminalInput.addEventListener("input", updateCursorPosition);
-    terminalInput.addEventListener("keyup", updateCursorPosition);
-    terminalInput.addEventListener("click", updateCursorPosition);
-    terminalInput.addEventListener("focus", updateCursorPosition);
-    
-    // Maintain focus on terminal input if session is active and mode is CLI
-    document.addEventListener("click", (e) => {
-        if (currentMode === "CLI" && isSessionActive) {
-            // Check if clicking inside terminal container but not on menus/links
-            if (e.target.closest(".system-container") && !e.target.closest("a") && !e.target.closest("button")) {
-                terminalInput.focus();
-                updateCursorPosition();
-            }
-        }
-    });
 }
-
